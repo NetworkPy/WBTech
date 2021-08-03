@@ -13,7 +13,7 @@ func main() {
 
 	for i := range arr {
 		wg.Add(1)
-		go worker(arr[i], wg) // Запуск ворекра
+		go worker(arr[i], wg) // Start workers
 	}
 	wg.Wait()
 }

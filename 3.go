@@ -16,7 +16,7 @@ func firstSqr(a []int) {
 	channel := make(chan int, len(a)) // Create channel
 
 	for _, value := range a {
-		go func(v int, c chan<- int) { // Start worker
+		go func(v int, c chan<- int) { // Start workers
 			vSqr := v * v
 			c <- vSqr // Push in channel
 		}(value, channel)
