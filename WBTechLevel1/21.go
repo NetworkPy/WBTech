@@ -18,14 +18,13 @@ func main() {
 	cArr := NewConArr(arr)
 
 	for i := range cArr.Arr {
-		cArr.readFromArr(i)
+		cArr.Wg.Add(1)
+		go cArr.readFromArr(i)
 	}
 	cArr.Wg.Wait()
-
 }
 
 func (ca *ConArr) readFromArr(idx int) {
-	ca.Wg.Add(1)
 	defer ca.Wg.Done()
 	if idx < len(ca.Arr) {
 		ca.Rwm.RLock()

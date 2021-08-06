@@ -11,7 +11,6 @@ import (
 // Написать программу, которая переворачивает строку. Символы могут быть unicode.
 
 func main() {
-
 	br := testing.Benchmark(BenchmarkFunction)
 	fmt.Println(br)
 }
@@ -38,6 +37,7 @@ func reverseStrTwo(input string) string {
 		n++
 	}
 	rune = rune[0:n]
+	fmt.Println(len(rune))
 	// Reverse
 	for i := 0; i < n/2; i++ {
 		rune[i], rune[n-1-i] = rune[n-1-i], rune[i]
@@ -47,12 +47,36 @@ func reverseStrTwo(input string) string {
 	return output
 }
 
-// Benchmark append vs swap
+// So so
+func reverseStrThird(str string) string {
+	l := len([]rune(str))
+	newStr := make([]rune, l)
+
+	for i := l - 1; i >= 0; i-- {
+		newStr[i] = []rune(str)[i]
+	}
+
+	return string(newStr)
+}
+
+// Champion!!! Best result
+func reverseStrFourth(str string) string {
+	newStr := []rune(str)
+	for i := 0; i < len(newStr)/2; i++ {
+		newStr[i], newStr[len(newStr)-1-i] = newStr[len(newStr)-1-i], newStr[i]
+	}
+	return string(newStr)
+}
+
+// Benchmark
 func BenchmarkFunction(b *testing.B) {
-	// str := "The quick brown 狐 jumped over the lazy 犬"
-	str := generateRandString(10000)
+	str := "The quick brown 狐 jumped over the lazy 犬"
+	// str := generateRandString(100)
 	// reverseStrOne(str)
-	reverseStrTwo(str)
+	// reverseStrThird(str)
+	// reverseStrTwo(str)
+	result := reverseStrFourth(str)
+	fmt.Println(result)
 }
 
 // Generate random string

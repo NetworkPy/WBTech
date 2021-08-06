@@ -1,6 +1,6 @@
 package main
 
-import "fmt"
+// К каким негативным последствиям может привести данный кусок кода и как это исправить?
 
 var justString string // Global virable
 
@@ -9,7 +9,6 @@ var justString string // Global virable
 // Local virable is the best. We can use return in function and change value for justString.
 // Global virable support work with configs. We read configuration file and use value from it in all program.
 
-
 func someFunc() {
 	v := createHugeString()
 	justString = v[:100]
@@ -17,7 +16,6 @@ func someFunc() {
 
 func main() {
 	someFunc()
-	fmt.Println(justString)
 }
 
 func createHugeString() string {
