@@ -1,13 +1,25 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+
+	"github.com/google/go-cmp/cmp"
+)
 
 // Написать быструю сортировку встроенными методами языка.
 
 func main() {
-	arr := []int{5, 6, 8, 12, 1, 7, 6, 9, 101000, 12003}
-	quickSort(arr, 0, len(arr))
-	fmt.Println(arr)
+	arr1 := []int{5, 6, 8, 12, 1, 7, 6, 9, 101000, 12003}
+	arr2 := []int{5, 6, 8, 12, 1, 7, 6, 9, 101000, 12003}
+	quickSort(arr1, 0, len(arr1))
+	sort.Ints(arr2)
+	if cmp.Equal(arr1, arr2) {
+		fmt.Println(true)
+	} else {
+		fmt.Println(false)
+	}
+
 }
 
 func partition(a []int, l int, r int) int {

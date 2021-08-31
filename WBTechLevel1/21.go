@@ -8,8 +8,8 @@ import (
 // Написать программу, которая в конкурентном виде читает элементы из массива в stdout.
 
 type ConArr struct {
-	Rwm sync.RWMutex
-	Wg  sync.WaitGroup
+	Rwm *sync.RWMutex
+	Wg  *sync.WaitGroup
 	Arr []int
 }
 
@@ -34,5 +34,9 @@ func (ca *ConArr) readFromArr(idx int) {
 }
 
 func NewConArr(arr []int) *ConArr {
-	return &ConArr{Arr: arr}
+	return &ConArr{
+		Arr: arr,
+		Rwm: &sync.RWMutex{},
+		Wg:  &sync.WaitGroup{},
+	}
 }

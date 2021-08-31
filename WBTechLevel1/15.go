@@ -45,7 +45,7 @@ func fourthVersion(a int, b int) (int, int) {
 
 // A ^ B = C
 // C ^ B = A
-// A ^ C = B
+// A ^ C = B 
 func fifthVersion(a int, b int) (int, int) {
 	a = a ^ b
 	b = a ^ b

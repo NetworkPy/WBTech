@@ -10,7 +10,7 @@ import (
 // Написать свою структуру счетчик, которая будет инкрементировать и выводить значения в конкурентной среде.
 
 type Counter struct {
-	rw    sync.RWMutex
+	rw    *sync.RWMutex
 	Count int64
 }
 
@@ -44,7 +44,9 @@ func (c *Counter) getCount() int64 {
 }
 
 func NewCounter() *Counter {
-	return &Counter{}
+	return &Counter{
+		rw: &sync.RWMutex{},
+	}
 }
 
 func (c *Counter) PrintCount() {

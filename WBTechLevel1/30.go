@@ -5,11 +5,12 @@ import "fmt"
 // Удалить i-ый элемент из слайса.
 
 func main() {
-	var arr = []int{-3, 1, 2, 3, 6, 8}
-	arr = deleteFromSliceFirst(arr, 0)
-	fmt.Println(arr)
-	arr = deleteFromSliceSecond(arr, 0)
-	fmt.Println(arr)
+	var arr1 = []int{-3, 1, 2, 3, 6, 8}
+	var arr2 = []int{-3, 1, 2, 3, 6, 8}
+	arr1 = deleteFromSliceFirst(arr1, 2)
+	fmt.Println(arr1)
+	arr2 = deleteFromSliceSecond(arr2, 0)
+	fmt.Println(arr2)
 }
 
 // Changes the order of elements
